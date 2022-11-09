@@ -2,7 +2,7 @@ import {React, useEffect} from 'react';
 import {
     FaUser
   } from "react-icons/fa";
-import profilePicture from "../assets/picture12.jpg";
+import profilePicture from "../assets/picture13.jpg";
 import { Link } from "react-router-dom";
 
 
