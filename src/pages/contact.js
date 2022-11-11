@@ -1,16 +1,5 @@
-import {React, useEffect} from 'react';
+import {React, useEffect, useRef } from 'react';
 import {
-  FaHome,
-  FaUser,
-  FaBriefcase,
-  FaBlog,
-  FaAddressBook,
-  FaDownload,
-  FaGraduationCap,
-  FaLaptopCode,
-  FaRedo,
-  FaCalendar,
-  FaLink,
   FaMapMarkedAlt,
   FaEnvelope,
   FaPhone,
@@ -18,14 +7,48 @@ import {
   FaTwitter,
   FaInstagram,
   FaLinkedin,
-  FaGithub
+  FaGithub,
+  FaThumbsUp
 } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 function Contact() {
+
+  const form = useRef();
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    console.log(e.target[0].value.charAt(0).toUpperCase() + e.target[0].value.slice(1));
+    const userNameFirstLetter = e.target[0].value.charAt(0).toUpperCase() + e.target[0].value.slice(1);
+    e.target[0].value = userNameFirstLetter;
+    if((e.target[0].value && e.target[2].value && e.target[3].value && e.target[4].value) === "") {
+      toast.warn(<p className='toastMessageStyle'> 🔊 Please  Fill ✍️ All The 
+      Fields 😨😱 , Thank You 😉🤗👍 </p>);
+      return
+    }
+    // e.target[0].value.charAt(0).toUpperCase() + str.slice(1);
+      
+  // Sending Email using emailjs library ........
+    emailjs.sendForm('service_qxruj7l', 'template_faqvc2i', form.current, 'j8ofzcrEGYfHxaI3t')
+      .then((result) => {
+        console.log(result.text);
+        toast.success(<p className='toastMessageStyle'> Thank You 🚀😊🤝 , i will contact 
+        to you ASAP ✌️👍  </p>);
+      }, (error) => {
+          console.log(error.text);
+          toast.error(<p className='toastMessageStyle'> Sorry 🙇‍♂️ for inconvenience 🤯 , Please 
+          Try Again 🔄🔁👍  </p>);
+      });
+
+      e.target.reset();
+  };
 
   return (
     <>
@@ -68,25 +91,25 @@ function Contact() {
               <a href="#"> <FaFacebook className="mediaIcons"/> </a>
               <a href="#"> <FaTwitter className="mediaIcons"/> </a>
               <a href="#"> <FaInstagram className="mediaIcons"/> </a>
-              <a href="#"> <FaLinkedin className="mediaIcons"/> </a>
+              <a href="https://www.linkedin.com/in/saravanan0/" target="_blank"> <FaLinkedin className="mediaIcons"/> </a>
               <a href="https://github.com/saravanabot0" target="_blank"> <FaGithub className="mediaIcons"/> </a>
             </div>
 
           </div>
           
-          <form action="">
+          <form ref={form} onSubmit={sendEmail}>
 
             <div className="inputBox">
-              <input type="text" placeholder="your name"/>
-              <input type="number" placeholder="your number"/>
+              <input type="text" name="user_name" placeholder="your name" />
+              <input type="number" name="mobile_no" placeholder="your number"/>
             </div>
 
             <div className="inputBox">
-              <input type="email" placeholder="your email"/>
-              <input type="text" placeholder="your subject"/>
+              <input type="email" name="user_email" placeholder="your email"/>
+              <input type="text" name="subject" placeholder="your subject"/>
             </div>
 
-            <textarea name=""  placeholder="your message" id="" cols="30" rows="10" />
+            <textarea name="message"  placeholder="your message" id="" cols="30" rows="10" />
 
             <input type="submit" value="Send Message" className="btn" />
 
@@ -95,6 +118,18 @@ function Contact() {
         </div>
 
       </section>
+      <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark" 
+      />
     </>
   )
 }

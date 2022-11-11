@@ -11,12 +11,6 @@
     background-color: blueviolet;
 }
 
-@mixin grid(val) {
-    display: grid;
-    grid-template: repeat(auto-fit, minimax($val, 1fr));
-    gap: 1.5rem;
-}
-
 
 :root {
     --crimson: crimson;
@@ -36,27 +30,40 @@
 .textNone {
     text-decoration: none;
 } 
+.toastMessageStyle {
+    font-size: 1.5rem!important;
+}
 
 
+.Toastify__toast {
+    position: relative;
+    min-height: var(--toastify-toast-min-height);
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    padding: 8px;
+    border-radius: 10px!important;
+    box-shadow: 0 1px 10px 0 rgb(0 0 0 / 10%), 0 2px 15px 0 rgb(0 0 0 / 5%);
+    display: flex;
+    justify-content: space-between;
+    max-height: var(--toastify-toast-max-height);
+    overflow: hidden;
+    font-family: var(--toastify-font-family);
+    cursor: default;
+    direction: ltr;
+    z-index: 0;
+}
 
-/* .bgCrimson {
-    background-color: crimson;
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-.bgBlack {
-    background-color: #0d0d0d;
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
-.bgLightBlack {
-    background-color: #1a1a1a;
-}
-.bgWhite {
-    background-color: #fff;
-}
-.bgLightColor {
-    background-color: #aaa;
-}
-.boxShadow {
-    box-shadow: 0.5rem 1rem rgba(0,0,0,.7);
-} */
 
 html {
     font-size: 62.5%;
