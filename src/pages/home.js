@@ -26,7 +26,7 @@ function Home() {
       I learned many things on myself in front-end.  </p>
       <div className="aboutMeBtn">
       <Link to="/about" className='textNone'>
-      <a href="#" className="btn"> About Me <span> <FaUser className="userBtnIcon"/> </span> </a>
+      <div className="btn"> About Me <span> <FaUser className="userBtnIcon"/> </span> </div>
       </Link>
       </div>
     </div>

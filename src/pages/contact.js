@@ -25,27 +25,30 @@ function Contact() {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value.charAt(0).toUpperCase() + e.target[0].value.slice(1));
+
+   //Convert the first letter into the Caps
     const userNameFirstLetter = e.target[0].value.charAt(0).toUpperCase() + e.target[0].value.slice(1);
     e.target[0].value = userNameFirstLetter;
+
     if((e.target[0].value && e.target[2].value && e.target[3].value && e.target[4].value) === "") {
       toast.warn(<p className='toastMessageStyle'> 🔊 Please  Fill ✍️ All The 
       Fields 😨😱 , Thank You 😉🤗👍 </p>);
       return
     }
-    // e.target[0].value.charAt(0).toUpperCase() + str.slice(1);
       
   // Sending Email using emailjs library ........
     emailjs.sendForm('service_qxruj7l', 'template_faqvc2i', form.current, 'j8ofzcrEGYfHxaI3t')
       .then((result) => {
         console.log(result.text);
-        toast.success(<p className='toastMessageStyle'> Thank You 🚀😊🤝 , i will contact 
-        to you ASAP ✌️👍  </p>);
+        // toast.success(<p className='toastMessageStyle'> Thank You 🚀😊🤝 , i will contact 
+        // to you ASAP ✌️👍  </p>);
       }, (error) => {
           console.log(error.text);
-          toast.error(<p className='toastMessageStyle'> Sorry 🙇‍♂️ for inconvenience 🤯 , Please 
-          Try Again 🔄🔁👍  </p>);
+          toast.error(<p className='toastMessageStyle'> {error.text} </p>);
       });
+
+      toast.success(<p className='toastMessageStyle'> Thank You 🚀😊🤝 , i will contact 
+      to you ASAP ✌️👍  </p>);
 
       e.target.reset();
   };

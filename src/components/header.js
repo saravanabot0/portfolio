@@ -1,83 +1,60 @@
-import {React, useEffect} from 'react';
+import { React, useEffect } from "react";
 import {
-    FaHome,
-    FaUser,
-    FaBriefcase,
-    FaBlog,
-    FaAddressBook,
-    FaDownload,
-    FaGraduationCap,
-    FaLaptopCode,
-    FaRedo,
-    FaCalendar,
-    FaLink,
-    FaMapMarkedAlt,
-    FaEnvelope,
-    FaPhone,
-    FaFacebook,
-    FaTwitter,
-    FaInstagram,
-    FaLinkedin
-  } from "react-icons/fa";
+  FaHome,
+  FaUser,
+  FaBriefcase,
+  FaBlog,
+  FaAddressBook,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div>
-        <nav className="navbar cursorPointer">
-            <Link to="/" className='navBarLink'>
-          <a>
+      <nav className="navbar cursorPointer">
+        <Link to="/" className="navBarLink">
+          {" "}
+          <i>
             {" "}
-            <i>
-              {" "}
-              <FaHome />{" "}
-            </i>{" "}
-            <span> Home </span>{" "}
-          </a>
-          </Link>
-          <Link to="/about" className='navBarLink'>
-          <a>
+            <FaHome />{" "}
+          </i>{" "}
+          <span> Home </span>{" "}
+        </Link>
+        <Link to="/about" className="navBarLink">
+          {" "}
+          <i>
             {" "}
-            <i>
-              {" "}
-              <FaUser />{" "}
-            </i>{" "}
-            <span> About </span>{" "}
-          </a>
-          </Link>
-          <Link to="/portfolio" className='navBarLink'>
-          <a>
+            <FaUser />{" "}
+          </i>{" "}
+          <span> About </span>{" "}
+        </Link>
+        <Link to="/portfolio" className="navBarLink">
+          {" "}
+          <i>
             {" "}
-            <i>
-              {" "}
-              <FaBriefcase />{" "}
-            </i>{" "}
-            <span> Portfolio </span>{" "}
-          </a>
-          </Link>
-          <Link to="/blog" className='navBarLink'>
-          <a>
+            <FaBriefcase />{" "}
+          </i>{" "}
+          <span> Portfolio </span>{" "}
+        </Link>
+        <Link to="/blog" className="navBarLink">
+          {" "}
+          <i>
             {" "}
-            <i>
-              {" "}
-              <FaBlog />{" "}
-            </i>{" "}
-            <span> Blogs </span>{" "}
-          </a>
-          </Link>
-          <Link to="/contact" className='navBarLink'>
-          <a>
+            <FaBlog />{" "}
+          </i>{" "}
+          <span> Blogs </span>{" "}
+        </Link>
+        <Link to="/contact" className="navBarLink">
+          {" "}
+          <i>
             {" "}
-            <i>
-              {" "}
-              <FaAddressBook />{" "}
-            </i>{" "}
-            <span> Contact </span>{" "}
-          </a>
-          </Link>
-        </nav>
-      </div>
-  )
+            <FaAddressBook />{" "}
+          </i>{" "}
+          <span> Contact </span>{" "}
+        </Link>
+      </nav>
+    </div>
+  );
 }
 
-export default Header
+export default Header;
