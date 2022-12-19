@@ -295,16 +295,117 @@ section {
     gap: 4rem;
     min-height: calc(100vh - 6.5rem);
 }
-.home .image {
+.home .fullImageBox {
     flex: 1 1 42rem;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home .image {
     text-align: center;
-}
-.home .image img {
-    height: 45rem;
+    position: relative;
     width: 45rem;
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    /* object-fit: cover; */
+    height: 45rem;
+    background: var(--lightBlack);
+    border-radius: 50%;
+    overflow: hidden;
 }
+.home .image::before {
+    content: '';
+    position: absolute;
+    inset: -10px 140px;
+    background: linear-gradient(315deg,red,#d400d4);
+    transition: 0.5s;
+    animation: circleBorder 4s linear infinite;
+}
+.home .image:hover::before {
+    inset: -20px 0px;
+}
+
+@keyframes circleBorder 
+{
+  0% 
+  {
+    transform: rotate(0deg);
+  }
+  100% 
+  {
+    transform: rotate(360deg);
+  }
+}
+
+.home .image::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    background: var(--black);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.home .image .imgContent {
+    position: absolute;
+    inset: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: #d400d4; */
+    border: 6px solid var(--lightBlack);
+    z-index: 3;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+
+.home .image .imgContent img  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+    pointer-events: none;
+    z-index: 3;
+}
+.home .image:hover .imgContent img {
+    opacity: 0;
+}
+.home .image .imgContent h2 {
+    position: relative;
+    font-size: 2.7rem;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.home .image .imgContent h2 span {
+  font-weight: 300;
+  font-size: 2rem;
+}
+.home .image .imgContent a {
+    position: relative;
+    margin-top: 15px;
+    padding: 15px 25px;
+    background-color: var(--crimson);
+    color: var(--white);
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.home .image .imgContent a:hover {
+  letter-spacing: 0.2em;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+
 .home .content {
     flex: 1 1 42rem;
 }
@@ -325,7 +426,7 @@ section {
     font-size: 3rem;
     color: var(--crimson);
     padding: .5rem 0;
-    display: block;
+    /* display: block; */
 }
 .home .content p {
     font-size: 1.5rem;
@@ -333,6 +434,7 @@ section {
     padding: 1rem 0;
     line-height: 2;
 }
+
 
 .about .row {
     display: flex;
@@ -720,10 +822,23 @@ section {
         text-align: center;
         gap: 2rem;
     }
-    .home .image img {
+    .home .image {
         height: 30rem;
         width: 30rem;
     }
+    .home .image::before {
+        inset: -10px 100px;
+    }
+    .home .image .imgContent h2 {
+        font-size: 1.8rem;
+    }
+    .home .image .imgContent h2 span {
+        font-size: 1.2rem;
+    }
+    .home .image .imgContent a {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }    
     .home .content h3 {
         font-size: 3rem;
     }

@@ -2,8 +2,9 @@ import {React, useEffect} from 'react';
 import {
     FaUser
   } from "react-icons/fa";
-import profilePicture from "../assets/picture13.jpg";
+import profilePicture from "../assets/picture17.jpg";
 import { Link } from "react-router-dom";
+import { Typewriter } from 'react-simple-typewriter'
 
 
 function Home() {
@@ -16,12 +17,31 @@ function Home() {
     <>
     {/* home section starts */}
     <section className="home">
-    <div className="image">
+      <div className='fullImageBox'>
+      <div className="image cursorPointer">
+      {/* <img src={profilePicture} alt="profilePicture"/> */}
+      
+      <div className='imgContent'>
       <img src={profilePicture} alt="profilePicture"/>
+          <h2> Saravanan<br/><span> Front-End Developer </span> </h2>
+          <Link to="/contact"> Contact me </Link>
+      </div>
     </div>
+
+      </div>
+    
     <div className="content">
       <h3> Hi, I Am Saravanan </h3>
-      <span> Front-end developer </span>
+      <span> <Typewriter
+            words={['I \'m a front-end developer' ]}
+            loop={0}
+            cursor
+            // cursorStyle='_'
+            typeSpeed={100}
+            deleteSpeed={80}
+            delaySpeed={1000}
+          /> </span>
+      
       <p> I have one year of experience in real-time projects. And I have done functionality and API integration in Admin panel projects. Then 
       I learned many things on myself in front-end.  </p>
       <div className="aboutMeBtn">
